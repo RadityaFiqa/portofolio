@@ -1,0 +1,72 @@
+[
+  {
+    "id": 1,
+    "slug": "enterprise-resource-planning-system",
+    "title": "Enterprise Resource Planning System",
+    "description": "A comprehensive ERP solution for managing business operations including inventory, HR, and finance modules.",
+    "fullDescription": "This Enterprise Resource Planning (ERP) system was designed to streamline business operations for medium to large enterprises. The system integrates multiple business functions including inventory management, human resources, financial accounting, and supply chain management into a single unified platform.\n\nKey features include real-time data synchronization, customizable dashboards, role-based access control, and automated reporting. The system was built with scalability in mind, capable of handling thousands of concurrent users while maintaining optimal performance.\n\nThe project involved close collaboration with stakeholders to understand business requirements and deliver a solution that improved operational efficiency by 40%.",
+    "image": "/project_image.png",
+    "images": ["/project_image.png", "/project_image.png", "/project_image.png"],
+    "techStack": ["React", "Node.js", "PostgreSQL"],
+    "category": "Web Dev",
+    "featured": true,
+    "liveUrl": "https://example.com",
+    "githubUrl": "https://github.com"
+  },
+  {
+    "id": 2,
+    "slug": "e-commerce-platform",
+    "title": "E-Commerce Platform",
+    "description": "Scalable e-commerce platform with real-time inventory management and payment gateway integration.",
+    "fullDescription": "A modern e-commerce platform built to handle high-traffic online stores with features like real-time inventory tracking, multiple payment gateway integrations, and a seamless checkout experience.\n\nThe platform supports multi-vendor capabilities, allowing businesses to onboard multiple sellers while maintaining centralized order management. Advanced features include AI-powered product recommendations, dynamic pricing, and comprehensive analytics dashboard.\n\nIntegrated with major payment providers including Stripe, PayPal, and local payment methods to ensure maximum conversion rates across different regions.",
+    "image": "/project_image.png",
+    "images": ["/project_image.png", "/project_image.png", "/project_image.png"],
+    "techStack": ["Next.js", "TypeScript", "MongoDB"],
+    "category": "Web Dev",
+    "featured": true,
+    "liveUrl": "https://example.com",
+    "githubUrl": "https://github.com"
+  },
+  {
+    "id": 3,
+    "slug": "real-time-analytics-dashboard",
+    "title": "Real-time Analytics Dashboard",
+    "description": "Interactive dashboard for monitoring business metrics with real-time data visualization.",
+    "fullDescription": "A powerful analytics dashboard that provides real-time insights into business performance metrics. The dashboard features interactive charts, customizable widgets, and automated alert systems.\n\nBuilt with performance in mind, the system can process and visualize millions of data points in real-time using WebSocket connections for live updates. Users can create custom reports, set up automated email notifications, and export data in multiple formats.\n\nThe dashboard integrates with various data sources including databases, APIs, and third-party services to provide a unified view of business operations.",
+    "image": "/project_image.png",
+    "images": ["/project_image.png", "/project_image.png", "/project_image.png"],
+    "techStack": ["React", "D3.js", "WebSocket"],
+    "category": "Web Dev",
+    "featured": true,
+    "liveUrl": "https://example.com",
+    "githubUrl": "https://github.com"
+  },
+  {
+    "id": 4,
+    "slug": "inventory-management-app",
+    "title": "Inventory Management App",
+    "description": "Mobile application for tracking and managing inventory with barcode scanning feature.",
+    "fullDescription": "A comprehensive mobile inventory management solution designed for warehouses and retail businesses. The app features barcode and QR code scanning capabilities for quick item lookup and stock updates.\n\nKey features include offline mode support, real-time sync when connected, low stock alerts, and detailed inventory reports. The app supports multiple warehouse locations and provides insights into stock movement patterns.\n\nBuilt with Kotlin and following modern Android architecture patterns including MVVM, the app delivers a smooth and responsive user experience.",
+    "image": "/project_image.png",
+    "images": ["/project_image.png", "/project_image.png", "/project_image.png"],
+    "techStack": ["Kotlin", "Firebase", "Room DB"],
+    "category": "Android Dev",
+    "featured": false,
+    "liveUrl": "https://play.google.com",
+    "githubUrl": "https://github.com"
+  },
+  {
+    "id": 5,
+    "slug": "fitness-tracker-app",
+    "title": "Fitness Tracker App",
+    "description": "Android app for tracking workouts, calories, and health metrics with beautiful charts.",
+    "fullDescription": "A feature-rich fitness tracking application that helps users monitor their health and fitness journey. The app tracks workouts, calories, steps, sleep patterns, and various health metrics.\n\nBuilt with Jetpack Compose for a modern and fluid UI, the app features beautiful animated charts to visualize progress over time. Users can set goals, receive achievement badges, and share their progress with friends.\n\nThe app integrates with popular fitness devices and health APIs to provide comprehensive health insights and personalized recommendations.",
+    "image": "/project_image.png",
+    "images": ["/project_image.png", "/project_image.png", "/project_image.png"],
+    "techStack": ["Kotlin", "Jetpack Compose", "SQLite"],
+    "category": "Android Dev",
+    "featured": false,
+    "liveUrl": "https://play.google.com",
+    "githubUrl": "https://github.com"
+  }
+]

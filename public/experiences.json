@@ -1,0 +1,46 @@
+[
+  {
+    "id": 1,
+    "role": "Full-stack Developer",
+    "company": "PT. Elnusa Tbk",
+    "companyUrl": "https://elnusa.co.id",
+    "type": "full-time",
+    "startDate": "2024",
+    "endDate": "Present",
+    "description": "Leading the development of internal enterprise platforms. Spearheaded the migration of legacy systems to modern React-based architectures, resulting in a 40% improvement in load times.",
+    "techStack": ["React", "Node.js", "PostgreSQL"]
+  },
+  {
+    "id": 2,
+    "role": "Full-stack Developer",
+    "company": "PT. Baracipta Esa Engineering",
+    "companyUrl": "https://baracipta.co.id",
+    "type": "internship",
+    "startDate": "2023",
+    "endDate": "2023",
+    "description": "Collaborated with design teams to implement pixel-perfect user interfaces for various client projects. Assisted in backend API integration and database management.",
+    "techStack": ["Vue.js", "Laravel", "MySQL"]
+  },
+  {
+    "id": 3,
+    "role": "Software Developer",
+    "company": "UPT TIK Universitas Sebelas Maret",
+    "companyUrl": "https://uns.ac.id",
+    "type": "internship",
+    "startDate": "2023",
+    "endDate": "2023",
+    "description": "Helped internal team for collecting data and maintaining university applications. Improved data processing workflows.",
+    "techStack": ["PHP", "MySQL", "JavaScript"]
+  },
+  {
+    "id": 4,
+    "role": "Full-stack Developer",
+    "company": "PT. Upcolab",
+    "companyUrl": "https://upcolab.com",
+    "type": "freelance",
+    "startDate": "2023",
+    "endDate": "Present",
+    "description": "Developed Android applications and web solutions for various clients in the digital marketing sector.",
+    "techStack": ["Kotlin", "React", "Firebase"]
+  }
+]

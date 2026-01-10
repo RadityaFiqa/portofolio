@@ -1,0 +1,30 @@
+[
+  {
+    "id": 1,
+    "title": "1st Place Mobile App Competition",
+    "description": "Become the 1st place in Mobile App Competition at Magic Camp 2023. Held by Himpunan Mahasiswa Manajemen Administrasi Universitas Sebelas Maret",
+    "year": "2023",
+    "icon": "trophy"
+  },
+  {
+    "id": 2,
+    "title": "Finalist Innovative Tech Competition",
+    "description": "Become the finalist in Innovative Tech Competition at Ifest Comp 2022. Held by Himpunan Mahasiswa Informatika Universitas Padjajaran",
+    "year": "2022",
+    "icon": "medal"
+  },
+  {
+    "id": 3,
+    "title": "1st Place Business Plan Competition",
+    "description": "Become the 1st place in Business Plan Competition at Smart IT Fest 2022. Held by Himpunan Mahasiswa D3 Teknik Informatika Universitas Sebelas Maret",
+    "year": "2022",
+    "icon": "trophy"
+  },
+  {
+    "id": 4,
+    "title": "2nd Place Web Development Competition",
+    "description": "Become the 2nd place in Web Development Competition at Smart Inotek Comp 2022. Held by Himpunan Mahasiswa D3 Teknik Informatika PSDKU Universitas Sebelas Maret",
+    "year": "2022",
+    "icon": "medal"
+  }
+]

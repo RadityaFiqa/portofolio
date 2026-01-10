@@ -1,0 +1,282 @@
+[
+  {
+    "slug": "arsitektur-rapi-tapi-sulit-dikembangkan",
+    "title": "Arsitektur yang Terlihat Rapi Tapi Sulit Dikembangkan",
+    "description": "Refleksi tentang bagaimana arsitektur yang terlihat rapi di diagram bisa jadi sulit dikembangkan di praktiknya.",
+    "date": "2025-10-21",
+    "image": "/project_image.png",
+    "tags": ["engineering", "architecture", "design"],
+    "category": "Engineering Journey",
+    "featured": true
+  },
+  {
+    "slug": "tech-debt-kapan-dibayar-kapan-ditunda",
+    "title": "Tech Debt: Kapan Harus Dibayar, Kapan Bisa Ditunda",
+    "description": "Refleksi tentang bagaimana memprioritaskan technical debt: mana yang harus segera dibayar, dan mana yang bisa ditunda.",
+    "date": "2025-04-09",
+    "image": "/project_image.png",
+    "tags": ["engineering", "tech-debt", "architecture"],
+    "category": "Engineering Journey",
+    "featured": true
+  },
+  {
+    "slug": "clean-code-ideal-tapi-dunia-kerja-tidak",
+    "title": "Clean Code Itu Ideal, Tapi Dunia Kerja Tidak Selalu Ideal",
+    "description": "Refleksi tentang gap antara ideal clean code di buku dan realitas dunia kerja yang penuh constraint dan trade-off.",
+    "date": "2025-03-25",
+    "image": "/project_image.png",
+    "tags": ["engineering", "clean-code", "quality"],
+    "category": "Engineering Journey",
+    "featured": true
+  },
+  {
+    "slug": "belajar-teknologi-baru-tanpa-fomo",
+    "title": "Belajar Teknologi Baru Tanpa Terjebak FOMO",
+    "description": "Cara belajar teknologi baru dengan fokus pada kebutuhan nyata, bukan karena takut ketinggalan tren.",
+    "date": "2024-12-25",
+    "image": "/project_image.png",
+    "tags": ["career", "engineering", "learning"],
+    "category": "Engineering Journey",
+    "featured": false
+  },
+  {
+    "slug": "awal-mula-saya-menulis",
+    "title": "Awal Mula Saya Menulis",
+    "description": "Tentang perjalanan menuju senior Software Engineer dan alasan saya mulai menuliskannya.",
+    "date": "2024-11-25",
+    "image": "/project_image.png",
+    "tags": ["software-engineer", "career", "engineering"],
+    "category": "Engineering Journey",
+    "featured": false
+  },
+  {
+    "slug": "boundary-kabur-sulit-dipelihara",
+    "title": "Boundary yang Kabur, Sistem yang Sulit Dipelihara",
+    "description": "Tentang pentingnya boundary yang jelas dalam arsitektur sistem.",
+    "date": "2025-09-15",
+    "image": "/project_image.png",
+    "tags": ["engineering", "architecture", "design"],
+    "category": "Engineering Journey",
+    "featured": false
+  },
+  {
+    "slug": "culture-code-quality-tanpa-aturan",
+    "title": "Culture Code Quality Tanpa Aturan yang Jelas",
+    "description": "Bagaimana membangun budaya kualitas kode tanpa aturan yang terlalu rigid.",
+    "date": "2025-08-20",
+    "image": "/project_image.png",
+    "tags": ["engineering", "culture", "quality"],
+    "category": "Engineering Journey",
+    "featured": false
+  },
+  {
+    "slug": "culture-engineering-dari-contoh-bukan-rule",
+    "title": "Culture Engineering: Dari Contoh, Bukan Rule",
+    "description": "Membangun budaya engineering yang baik melalui contoh, bukan aturan.",
+    "date": "2025-08-15",
+    "image": "/project_image.png",
+    "tags": ["engineering", "culture", "leadership"],
+    "category": "Engineering Journey",
+    "featured": false
+  },
+  {
+    "slug": "design-pattern-berguna-atau-interview",
+    "title": "Design Pattern: Berguna atau Hanya untuk Interview?",
+    "description": "Kapan design pattern benar-benar membantu dan kapan hanya over-engineering.",
+    "date": "2025-07-10",
+    "image": "/project_image.png",
+    "tags": ["design-pattern", "engineering", "interview"],
+    "category": "Engineering Journey",
+    "featured": false
+  },
+  {
+    "slug": "devsecops-sering-gagal-di-tim",
+    "title": "DevSecOps Sering Gagal di Tim",
+    "description": "Mengapa implementasi DevSecOps sering gagal dan bagaimana mengatasinya.",
+    "date": "2025-06-25",
+    "image": "/project_image.png",
+    "tags": ["devsecops", "security", "devops"],
+    "category": "Engineering Journey",
+    "featured": false
+  },
+  {
+    "slug": "dokumentasi-api-tetap-relevan",
+    "title": "Dokumentasi API yang Tetap Relevan",
+    "description": "Strategi menjaga dokumentasi API tetap up-to-date dan berguna.",
+    "date": "2025-06-15",
+    "image": "/project_image.png",
+    "tags": ["api", "documentation", "engineering"],
+    "category": "Engineering Journey",
+    "featured": false
+  },
+  {
+    "slug": "error-handling-yang-seharusnya-ada",
+    "title": "Error Handling yang Seharusnya Ada",
+    "description": "Best practices error handling yang sering diabaikan.",
+    "date": "2025-06-01",
+    "image": "/project_image.png",
+    "tags": ["error-handling", "engineering", "best-practices"],
+    "category": "Engineering Journey",
+    "featured": false
+  },
+  {
+    "slug": "file-upload-microservices",
+    "title": "File Upload di Microservices",
+    "description": "Pattern dan strategi menangani file upload di arsitektur microservices.",
+    "date": "2025-05-20",
+    "image": "/project_image.png",
+    "tags": ["microservices", "file-upload", "architecture"],
+    "category": "Engineering Journey",
+    "featured": false
+  },
+  {
+    "slug": "interview-engineering-cara-berpikir",
+    "title": "Interview Engineering: Cara Berpikir, Bukan Hafalan",
+    "description": "Bagaimana interview engineering seharusnya menguji cara berpikir, bukan hafalan.",
+    "date": "2025-05-10",
+    "image": "/project_image.png",
+    "tags": ["interview", "career", "engineering"],
+    "category": "Career",
+    "featured": false
+  },
+  {
+    "slug": "keputusan-teknis-benar-hari-ini-salah-besok",
+    "title": "Keputusan Teknis yang Benar Hari Ini, Salah Besok",
+    "description": "Tentang sifat keputusan teknis yang bisa berubah seiring waktu.",
+    "date": "2025-05-01",
+    "image": "/project_image.png",
+    "tags": ["engineering", "decision-making", "architecture"],
+    "category": "Engineering Journey",
+    "featured": false
+  },
+  {
+    "slug": "keputusan-teknis-saat-semua-opsi-buruk",
+    "title": "Keputusan Teknis Saat Semua Opsi Buruk",
+    "description": "Bagaimana membuat keputusan teknis ketika tidak ada opsi yang ideal.",
+    "date": "2025-04-25",
+    "image": "/project_image.png",
+    "tags": ["engineering", "decision-making", "trade-off"],
+    "category": "Engineering Journey",
+    "featured": false
+  },
+  {
+    "slug": "kesalahan-kecil-di-awal-terasa-bertahun-tahun",
+    "title": "Kesalahan Kecil di Awal, Terasa Bertahun-tahun",
+    "description": "Bagaimana kesalahan arsitektur kecil di awal bisa berdampak besar.",
+    "date": "2025-04-15",
+    "image": "/project_image.png",
+    "tags": ["engineering", "architecture", "lessons-learned"],
+    "category": "Engineering Journey",
+    "featured": false
+  },
+  {
+    "slug": "leadership-teknis-tanpa-jabatan",
+    "title": "Leadership Teknis Tanpa Jabatan",
+    "description": "Bagaimana menjadi technical leader tanpa harus punya title.",
+    "date": "2025-03-15",
+    "image": "/project_image.png",
+    "tags": ["leadership", "career", "engineering"],
+    "category": "Career",
+    "featured": false
+  },
+  {
+    "slug": "menghadapi-engineer-lebih-pintar",
+    "title": "Menghadapi Engineer yang Lebih Pintar",
+    "description": "Bagaimana bekerja dengan engineer yang lebih pintar dari kita.",
+    "date": "2025-03-01",
+    "image": "/project_image.png",
+    "tags": ["career", "teamwork", "engineering"],
+    "category": "Career",
+    "featured": false
+  },
+  {
+    "slug": "menjembatani-product-business-engineering",
+    "title": "Menjembatani Product, Business, dan Engineering",
+    "description": "Peran engineer dalam menjembatani komunikasi antar stakeholder.",
+    "date": "2025-02-20",
+    "image": "/project_image.png",
+    "tags": ["product", "business", "engineering"],
+    "category": "Engineering Journey",
+    "featured": false
+  },
+  {
+    "slug": "menolak-request-product-tanpa-defensif",
+    "title": "Menolak Request Product Tanpa Terlihat Defensif",
+    "description": "Cara menolak request product dengan alasan teknis yang konstruktif.",
+    "date": "2025-02-10",
+    "image": "/project_image.png",
+    "tags": ["product", "communication", "engineering"],
+    "category": "Engineering Journey",
+    "featured": false
+  },
+  {
+    "slug": "microservices-tanpa-observability-bunuh-diri",
+    "title": "Microservices Tanpa Observability = Bunuh Diri",
+    "description": "Pentingnya observability dalam arsitektur microservices.",
+    "date": "2025-01-25",
+    "image": "/project_image.png",
+    "tags": ["microservices", "observability", "devops"],
+    "category": "Engineering Journey",
+    "featured": false
+  },
+  {
+    "slug": "performance-issue-jarang-satu-akar-masalah",
+    "title": "Performance Issue Jarang Punya Satu Akar Masalah",
+    "description": "Tentang kompleksitas debugging performance issue di sistem yang besar.",
+    "date": "2025-01-15",
+    "image": "/project_image.png",
+    "tags": ["performance", "debugging", "engineering"],
+    "category": "Engineering Journey",
+    "featured": false
+  },
+  {
+    "slug": "rbac-sering-tidak-cukup",
+    "title": "RBAC Sering Tidak Cukup",
+    "description": "Keterbatasan RBAC dan kapan butuh model authorization yang lebih kompleks.",
+    "date": "2025-01-05",
+    "image": "/project_image.png",
+    "tags": ["rbac", "security", "authorization"],
+    "category": "Engineering Journey",
+    "featured": false
+  },
+  {
+    "slug": "senior-tanggung-jawab-bukan-umur",
+    "title": "Senior: Tanggung Jawab, Bukan Umur",
+    "description": "Apa yang membedakan engineer senior dari junior bukan soal tahun pengalaman.",
+    "date": "2024-12-15",
+    "image": "/project_image.png",
+    "tags": ["career", "engineering", "leadership"],
+    "category": "Career",
+    "featured": false
+  },
+  {
+    "slug": "shared-library-membantu-atau-memperlambat",
+    "title": "Shared Library: Membantu atau Memperlambat?",
+    "description": "Trade-off menggunakan shared library di arsitektur microservices.",
+    "date": "2024-12-05",
+    "image": "/project_image.png",
+    "tags": ["microservices", "architecture", "engineering"],
+    "category": "Engineering Journey",
+    "featured": false
+  },
+  {
+    "slug": "siapa-tanggung-jawab-security-issue",
+    "title": "Siapa Tanggung Jawab Security Issue?",
+    "description": "Tentang ownership dan tanggung jawab ketika terjadi security issue.",
+    "date": "2024-11-30",
+    "image": "/project_image.png",
+    "tags": ["security", "ownership", "engineering"],
+    "category": "Engineering Journey",
+    "featured": false
+  },
+  {
+    "slug": "testing-penting-tapi-jarang-dilakukan",
+    "title": "Testing Penting, Tapi Jarang Dilakukan",
+    "description": "Mengapa testing sering dilewatkan dan bagaimana membangun budaya testing di tim.",
+    "date": "2024-11-20",
+    "image": "/project_image.png",
+    "tags": ["testing", "quality", "best-practices"],
+    "category": "Engineering Journey",
+    "featured": false
+  }
+]

@@ -1,0 +1,22 @@
+[
+  {
+    "id": 1,
+    "name": "Ian Pangestu",
+    "role": "Software Analyst At PT. Elnusa Tbk",
+    "message": "Raditya is a great developer. He has a good understanding of the project and always delivers on time.",
+    "image": "/profile.png",
+    "social": {
+      "linkedin": "https://linkedin.com/in/ian-pangestu"
+    }
+  },
+  {
+    "id": 2,
+    "name": "Rizky Kurniawan",
+    "role": "Software Engineer At PT. Elnusa Tbk",
+    "message": "Raditya is a loyal and hardworking developer. He is always willing to learn new things and is a great team player.",
+    "image": "/profile.png",
+    "social": {
+      "linkedin": "https://linkedin.com/in/rizky-kurniawan"
+    }
+  }
+]

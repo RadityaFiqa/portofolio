@@ -1,0 +1,16 @@
+{
+  "name": "Raditya Firman S",
+  "role": "Software Engineer",
+  "image": "/profile.png",
+  "openToWork": true,
+  "bio": [
+    "Hello! I'm Raditya, a passionate software engineer with over 2 years of hands-on experience in building robust web applications. My journey in tech started with a curiosity for how things work on the internet, which quickly evolved into a career focused on creating efficient, scalable, and user-friendly digital solutions.",
+    "I specialize in full-stack development, with a particular focus on enterprise systems. I thrive in environments where performance and reliability are paramount. Whether it's architecting a new internal tool to streamline operations or optimizing an existing platform for better user experience, I approach every challenge with a problem-solving mindset and a keen eye for detail."
+  ],
+  "social": {
+    "linkedin": "https://linkedin.com/in/radityafirmansyaputra",
+    "github": "https://github.com/radityafirmansyaputra",
+    "instagram": "https://instagram.com/sekutumu",
+    "email": "raditya@example.com"
+  }
+}

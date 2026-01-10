@@ -1,0 +1,36 @@
+{
+  "languages": [
+    { "name": "JavaScript" },
+    { "name": "TypeScript" },
+    { "name": "PHP" },
+    { "name": "Kotlin" },
+    { "name": "Python" },
+    { "name": "Java" },
+    { "name": "Go" }
+  ],
+  "frameworks": [
+    { "name": "React" },
+    { "name": "Next.js" },
+    { "name": "Node.js" },
+    { "name": "Laravel" },
+    { "name": "Vue.js" },
+    { "name": "Express.js" },
+    { "name": "Spring Boot" }
+  ],
+  "databases": [
+    { "name": "PostgreSQL" },
+    { "name": "MySQL" },
+    { "name": "MongoDB" },
+    { "name": "Redis" },
+    { "name": "SQLite" }
+  ],
+  "tools": [
+    { "name": "Git" },
+    { "name": "Docker" },
+    { "name": "Linux" },
+    { "name": "VS Code" },
+    { "name": "Figma" },
+    { "name": "Postman" },
+    { "name": "Jira" }
+  ]
+}
