@@ -134,14 +134,6 @@ export default function About() {
                         <FaGithub className="w-4 h-4 text-gray-600 dark:text-gray-400" />
                       </a>
                       <a
-                        href={aboutData.social.github}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="w-10 h-10 bg-gray-200 dark:bg-gray-800 hover:bg-gray-300 dark:hover:bg-gray-700 rounded-lg flex items-center justify-center transition-colors"
-                      >
-                        <FaCode className="w-4 h-4 text-gray-600 dark:text-gray-400" />
-                      </a>
-                      <a
                         href={`mailto:${aboutData.social.email}`}
                         className="w-10 h-10 bg-gray-200 dark:bg-gray-800 hover:bg-gray-300 dark:hover:bg-gray-700 rounded-lg flex items-center justify-center transition-colors"
                       >

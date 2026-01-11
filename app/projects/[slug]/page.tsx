@@ -85,12 +85,12 @@ export default function ProjectDetail() {
                 <div className="w-3 h-3 bg-yellow-400 rounded-full"></div>
                 <div className="w-3 h-3 bg-green-400 rounded-full"></div>
               </div>
-              <div className="relative w-full aspect-video rounded-lg overflow-hidden">
+              <div className="relative w-full aspect-video rounded-lg overflow-hidden bg-gray-100 dark:bg-gray-700">
                 <Image
                   src={project.images[selectedImage]}
                   alt={project.title}
                   fill
-                  className="object-cover"
+                  className="object-contain"
                 />
               </div>
             </div>
@@ -101,7 +101,7 @@ export default function ProjectDetail() {
                 <button
                   key={index}
                   onClick={() => setSelectedImage(index)}
-                  className={`relative w-24 h-16 rounded-lg overflow-hidden flex-shrink-0 border-2 transition-all ${
+                  className={`relative w-24 h-16 rounded-lg overflow-hidden flex-shrink-0 border-2 transition-all bg-gray-100 dark:bg-gray-700 ${
                     selectedImage === index
                       ? "border-blue-500"
                       : "border-transparent opacity-60 hover:opacity-100"
@@ -111,7 +111,7 @@ export default function ProjectDetail() {
                     src={img}
                     alt={`${project.title} - ${index + 1}`}
                     fill
-                    className="object-cover"
+                    className="object-contain"
                   />
                 </button>
               ))}

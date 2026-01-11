@@ -33,7 +33,7 @@ export default function ProjectSection({ projects }: ProjectProps) {
         initial={{ opacity: 0, x: 100 }}
         whileInView={{ opacity: 1, x: 0 }}
         transition={{ duration: 1, ease: "easeInOut" }}
-        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 w-full max-w-5xl"
       >
         {projects.map((project) => (
           <Card
@@ -43,7 +43,7 @@ export default function ProjectSection({ projects }: ProjectProps) {
             image={project.image}
             title={project.title}
             description={project.description}
-            techStack={project.techStack}
+            techStack={project.techStack.slice(0, 3)}
           />
         ))}
       </motion.div>

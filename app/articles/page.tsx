@@ -4,7 +4,7 @@ import { useState, useMemo } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import OrnamentCircle from "@/app/ornament-circle2.svg";
-import { FaSearch, FaCalendar } from "react-icons/fa";
+import { FaSearch, FaCalendar, FaTh, FaList } from "react-icons/fa";
 import { motion } from "framer-motion";
 import { useQuery } from "@tanstack/react-query";
 import { formatDate, compareDates } from "@/helper/utils/dateFormatter";
@@ -16,6 +16,7 @@ export default function Articles() {
   const [searchQuery, setSearchQuery] = useState("");
   const [sortOrder, setSortOrder] = useState<"newest" | "oldest">("newest");
   const [activeCategory, setActiveCategory] = useState("All");
+  const [viewMode, setViewMode] = useState<"grid" | "list">("grid");
 
   const {
     data: articles = [],
@@ -104,6 +105,32 @@ export default function Articles() {
             <option value="newest">Newest</option>
             <option value="oldest">Oldest</option>
           </select>
+
+          {/* View Mode Toggle */}
+          <div className="flex items-center gap-1 ml-0 md:ml-4 bg-[#F0F1F3] dark:bg-gray-800 rounded-lg p-1">
+            <button
+              onClick={() => setViewMode("grid")}
+              className={`p-2 rounded-md transition-all duration-200 ${
+                viewMode === "grid"
+                  ? "bg-gradient-to-r from-green-400 to-blue-500 text-white"
+                  : "text-gray-500 hover:text-gray-700 dark:hover:text-gray-300"
+              }`}
+              title="Grid View"
+            >
+              <FaTh className="w-4 h-4" />
+            </button>
+            <button
+              onClick={() => setViewMode("list")}
+              className={`p-2 rounded-md transition-all duration-200 ${
+                viewMode === "list"
+                  ? "bg-gradient-to-r from-green-400 to-blue-500 text-white"
+                  : "text-gray-500 hover:text-gray-700 dark:hover:text-gray-300"
+              }`}
+              title="List View"
+            >
+              <FaList className="w-4 h-4" />
+            </button>
+          </div>
         </div>
 
         {/* Category Filter */}
@@ -137,53 +164,121 @@ export default function Articles() {
       <section className="px-4 md:px-8 lg:px-16 xl:px-20 flex flex-col items-center my-16">
         {filteredArticles.length > 0 ? (
           <motion.div
+            key={viewMode}
             initial={{ y: 100, opacity: 0 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ ease: "easeInOut", duration: 0.5 }}
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 w-full"
+            className={
+              viewMode === "grid"
+                ? "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 w-full"
+                : "flex flex-col gap-4 w-full max-w-4xl"
+            }
           >
-            {filteredArticles.map((article) => (
-              <Link
-                key={article.slug}
-                href={`/articles/${article.slug}`}
-                className="group block"
-              >
-                <article className="bg-[#F0F1F3] dark:bg-gray-800 rounded-xl p-6 h-full hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
-                  {/* Category */}
-                  <span className="inline-block px-3 py-1 bg-gradient-to-r from-green-400 to-blue-500 text-white text-xs font-medium rounded-full mb-4">
-                    {article.category}
-                  </span>
+            {filteredArticles.map((article) =>
+              viewMode === "grid" ? (
+                /* Grid View Card */
+                <Link
+                  key={article.slug}
+                  href={`/articles/${article.slug}`}
+                  className="group block"
+                >
+                  <article className="bg-[#F0F1F3] dark:bg-gray-800 rounded-xl p-6 h-full hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
+                    {/* Category */}
+                    <span className="inline-block px-3 py-1 bg-gradient-to-r from-green-400 to-blue-500 text-white text-xs font-medium rounded-full mb-4">
+                      {article.category}
+                    </span>
 
-                  {/* Title */}
-                  <h2 className="text-xl font-bold mb-3 group-hover:text-blue-500 transition-colors line-clamp-2">
-                    {article.title}
-                  </h2>
+                    {/* Title */}
+                    <h2 className="text-xl font-bold mb-3 group-hover:text-blue-500 transition-colors line-clamp-2">
+                      {article.title}
+                    </h2>
 
-                  {/* Description */}
-                  <p className="text-gray-500 dark:text-gray-400 text-sm mb-4 line-clamp-2">
-                    {article.description}
-                  </p>
+                    {/* Description */}
+                    <p className="text-gray-500 dark:text-gray-400 text-sm mb-4 line-clamp-2">
+                      {article.description}
+                    </p>
 
-                  {/* Date */}
-                  <div className="flex items-center gap-2 text-gray-400 text-sm">
-                    <FaCalendar className="text-xs" />
-                    <span>{formatDate(article.date)}</span>
-                  </div>
+                    {/* Date */}
+                    <div className="flex items-center gap-2 text-gray-400 text-sm">
+                      <FaCalendar className="text-xs" />
+                      <span>{formatDate(article.date)}</span>
+                    </div>
 
-                  {/* Tags */}
-                  <div className="flex flex-wrap gap-2 mt-4">
-                    {article.tags.slice(0, 3).map((tag) => (
-                      <span
-                        key={tag}
-                        className="px-2 py-1 bg-white dark:bg-gray-700 rounded text-xs text-gray-600 dark:text-gray-300"
-                      >
-                        #{tag}
-                      </span>
-                    ))}
-                  </div>
-                </article>
-              </Link>
-            ))}
+                    {/* Tags */}
+                    <div className="flex flex-wrap gap-2 mt-4">
+                      {article.tags.slice(0, 3).map((tag) => (
+                        <span
+                          key={tag}
+                          className="px-2 py-1 bg-white dark:bg-gray-700 rounded text-xs text-gray-600 dark:text-gray-300"
+                        >
+                          #{tag}
+                        </span>
+                      ))}
+                    </div>
+                  </article>
+                </Link>
+              ) : (
+                /* List View Card */
+                <Link
+                  key={article.slug}
+                  href={`/articles/${article.slug}`}
+                  className="group block"
+                >
+                  <article className="bg-[#F0F1F3] dark:bg-gray-800 rounded-xl p-5 hover:shadow-lg transition-all duration-300 border border-transparent hover:border-gray-300 dark:hover:border-gray-600">
+                    <div className="flex items-start gap-5">
+                      {/* Left: Date Column */}
+                      <div className="hidden md:flex flex-col items-center w-16 flex-shrink-0 pt-1">
+                        <span className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-green-400 to-blue-500">
+                          {formatDate(article.date).split(" ")[0]}
+                        </span>
+                        <span className="text-xs text-gray-500 dark:text-gray-400 uppercase">
+                          {formatDate(article.date).split(" ")[1]} {formatDate(article.date).split(" ")[2]}
+                        </span>
+                      </div>
+
+                      {/* Divider */}
+                      <div className="hidden md:block w-px h-20 bg-gray-300 dark:bg-gray-700 flex-shrink-0" />
+
+                      {/* Right: Content */}
+                      <div className="flex-1 min-w-0">
+                        {/* Header: Category & Mobile Date */}
+                        <div className="flex items-center gap-3 mb-2">
+                          <span className="inline-block px-3 py-1 bg-gradient-to-r from-green-400 to-blue-500 text-white text-xs font-medium rounded-full">
+                            {article.category}
+                          </span>
+                          <div className="flex md:hidden items-center gap-1.5 text-gray-400 text-xs">
+                            <FaCalendar className="text-[10px]" />
+                            <span>{formatDate(article.date)}</span>
+                          </div>
+                        </div>
+
+                        {/* Title */}
+                        <h2 className="text-lg font-bold mb-2 group-hover:text-blue-500 transition-colors">
+                          {article.title}
+                        </h2>
+
+                        {/* Description */}
+                        <p className="text-gray-500 dark:text-gray-400 text-sm line-clamp-2 mb-3">
+                          {article.description}
+                        </p>
+
+                        {/* Tags */}
+                        <div className="flex flex-wrap gap-2">
+                          {article.tags.slice(0, 5).map((tag) => (
+                            <span
+                              key={tag}
+                              className="px-2.5 py-1 bg-white dark:bg-gray-700 rounded-md text-xs text-gray-600 dark:text-gray-300 border border-gray-200 dark:border-gray-600"
+                            >
+                              #{tag}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+                  </article>
+                </Link>
+              )
+            )}
           </motion.div>
         ) : (
           <div className="text-center py-16">

@@ -35,12 +35,23 @@
   {
     "id": 4,
     "role": "Full Stack Developer",
+    "company": "Upwork",
+    "companyUrl": "https://upwork.com",
+    "type": "freelance",
+    "startDate": "Sep 2024",
+    "endDate": "Jan 2025",
+    "description": "Designed and built an employee management and online scheduling app for an Australian security company using Laravel (API) and Vue.js (frontend). Implemented automated deployment with GitHub Actions, reducing manual deployment time.",
+    "techStack": ["Laravel", "Vue.js", "GitHub Actions", "MySQL"]
+  },
+  {
+    "id": 5,
+    "role": "Full Stack Developer",
     "company": "PT. Upcolab",
     "companyUrl": "https://upcolab.com",
     "type": "freelance",
-    "startDate": "Jan 2023",
-    "endDate": "Present",
-    "description": "Developed Android applications including consultation platform, attendance tracking app, and mental health consultation system for various clients.",
-    "techStack": ["Kotlin", "Jetpack Compose", "Laravel", "Node.js", "Bun"]
+    "startDate": "Dec 2023",
+    "endDate": "Jun 2024",
+    "description": "Developed two mobile apps: an employee attendance system and a mental health consultation platform. Built and integrated the backend REST API using Bun Express.js, ensuring seamless mobile app performance.",
+    "techStack": ["Bun", "Express.js", "React Native", "PostgreSQL"]
   }
 ]

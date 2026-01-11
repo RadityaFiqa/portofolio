@@ -42,12 +42,12 @@ export default function Card({
           <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
           
           {/* Image */}
-          <div className={`relative overflow-hidden ${type === "project" ? "aspect-[16/9]" : "aspect-[16/10]"}`}>
+          <div className={`relative overflow-hidden bg-gray-100 dark:bg-gray-800 ${type === "project" ? "aspect-[16/9]" : "aspect-[16/10]"}`}>
             <Image
               src={image}
               alt={title}
               fill
-              className="object-cover transition-transform duration-500 group-hover:scale-110"
+              className="object-contain transition-transform duration-500 group-hover:scale-105"
             />
           </div>
 
