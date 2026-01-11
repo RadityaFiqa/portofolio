@@ -129,7 +129,7 @@ export default function Home() {
             variants={itemVariants}
             className="text-2xl md:text-3xl lg:text-4xl font-medium text-gray-600 dark:text-gray-300"
           >
-            I'm a Software Engineer who builds
+            Software Engineer specializing in
             <br />
             <motion.span
               variants={highlightVariants}
