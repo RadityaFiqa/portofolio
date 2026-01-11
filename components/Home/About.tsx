@@ -2,8 +2,10 @@
 import Image from "next/image";
 import OrnamentCircle from "@/app/ornament-circle.svg";
 import { motion, Variants } from "framer-motion";
-import Lottie from "lottie-react";
+import dynamic from "next/dynamic";
 import helloAnimation from "@/public/hello.json";
+
+const Lottie = dynamic(() => import("lottie-react"), { ssr: false });
 
 const containerVariants: Variants = {
   hidden: { opacity: 0 },
