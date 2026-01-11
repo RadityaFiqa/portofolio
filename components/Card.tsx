@@ -27,11 +27,22 @@ export default function Card({
       <div className="relative h-full bg-white dark:bg-gray-900 rounded-2xl overflow-hidden border border-gray-100 dark:border-gray-800 hover:border-transparent hover:shadow-2xl hover:shadow-blue-500/10 transition-all duration-500">
         {/* Image Container */}
         <div className="relative overflow-hidden">
+          {/* Window Header - Only for projects */}
+          {type === "project" && (
+            <div className="bg-[#F0F1F3] dark:bg-gray-800 px-4 py-3">
+              <div className="flex gap-2 items-center">
+                <div className="w-3 h-3 bg-red-400 rounded-full"></div>
+                <div className="w-3 h-3 bg-yellow-400 rounded-full"></div>
+                <div className="w-3 h-3 bg-green-400 rounded-full"></div>
+              </div>
+            </div>
+          )}
+          
           {/* Gradient Overlay */}
           <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
           
           {/* Image */}
-          <div className="relative aspect-[16/10] overflow-hidden">
+          <div className={`relative overflow-hidden ${type === "project" ? "aspect-[16/9]" : "aspect-[16/10]"}`}>
             <Image
               src={image}
               alt={title}

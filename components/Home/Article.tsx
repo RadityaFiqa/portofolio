@@ -1,46 +1,16 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { FaCalendar } from "react-icons/fa";
+import { formatDate } from "@/helper/utils/dateFormatter";
+import { Article } from "@/helper/utils/api";
 
-interface Article {
-  slug: string;
-  title: string;
-  description: string;
-  date: string;
-  image: string;
-  category: string;
-  featured: boolean;
+interface ArticlesProps {
+  articles: Article[];
 }
 
-// Format date to DD MMM YYYY
-function formatDate(dateString: string): string {
-  const date = new Date(dateString);
-  const day = date.getDate().toString().padStart(2, "0");
-  const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-  const month = months[date.getMonth()];
-  const year = date.getFullYear();
-  return `${day} ${month} ${year}`;
-}
-
-export default function Articles() {
-  const [articles, setArticles] = useState<Article[]>([]);
-
-  useEffect(() => {
-    fetch("/articles.json")
-      .then((res) => res.json())
-      .then((data: Article[]) => {
-        // Filter only featured articles, limit to 3
-        const featuredArticles = data
-          .filter((article) => article.featured)
-          .slice(0, 3);
-        setArticles(featuredArticles);
-      })
-      .catch((err) => console.error("Error fetching articles:", err));
-  }, []);
-
+export default function Articles({ articles }: ArticlesProps) {
   return (
     <section className="px-4 md:px-8 lg:px-16 xl:px-20 lg:min-h-screen flex flex-col items-center my-16">
       <h1 className="text-3xl md:text-3xl lg:text-4xl xl:text-5xl font-bold mb-4 ">

@@ -1,35 +1,28 @@
 "use client";
 
-import { useState, useEffect, useMemo } from "react";
+import { useState, useMemo } from "react";
 import Image from "next/image";
 import Card from "@/components/Card";
 import OrnamentCircle from "@/app/ornament-circle2.svg";
 import { FaSearch } from "react-icons/fa";
 import { motion } from "framer-motion";
-
-interface Project {
-  id: number;
-  slug: string;
-  title: string;
-  description: string;
-  image: string;
-  techStack: string[];
-  category: string;
-}
+import { useQuery } from "@tanstack/react-query";
+import { fetchProjects, projectsQueryKey, Project } from "@/helper/utils/api";
 
 const categories = ["All", "Web Dev", "Android Dev"];
 
 export default function Projects() {
-  const [projects, setProjects] = useState<Project[]>([]);
   const [searchQuery, setSearchQuery] = useState("");
   const [activeCategory, setActiveCategory] = useState("All");
 
-  useEffect(() => {
-    fetch("/projects.json")
-      .then((res) => res.json())
-      .then((data) => setProjects(data))
-      .catch((err) => console.error("Error fetching projects:", err));
-  }, []);
+  const {
+    data: projects = [],
+    isLoading,
+    error,
+  } = useQuery<Project[]>({
+    queryKey: projectsQueryKey,
+    queryFn: fetchProjects,
+  });
 
   const filteredProjects = useMemo(() => {
     return projects.filter((project) => {
@@ -41,6 +34,22 @@ export default function Projects() {
       return matchesSearch && matchesCategory;
     });
   }, [projects, searchQuery, activeCategory]);
+
+  if (isLoading) {
+    return (
+      <main className="min-h-screen flex items-center justify-center">
+        <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-blue-500"></div>
+      </main>
+    );
+  }
+
+  if (error) {
+    return (
+      <main className="lg:my-8 h-relative lg:min-h-screen flex items-center justify-center">
+        <p className="text-red-400 text-xl">Error loading projects.</p>
+      </main>
+    );
+  }
 
   return (
     <main className="lg:my-8 h-relative lg:min-h-screen">
@@ -76,20 +85,20 @@ export default function Projects() {
           </button>
         </div>
 
-        <div className="flex items-center justify-center w-full h-8 gap-4 md:gap-8 mb-12 mt-16">
+        <div className="flex items-center justify-center w-full gap-2 md:gap-3 mb-12 mt-10">
           {categories.map((category) => (
             <button
               key={category}
               onClick={() => setActiveCategory(category)}
-              className={`rounded-full p-0.5 ${
+              className={`rounded-full p-[1.5px] transition-all duration-200 ${
                 activeCategory === category
                   ? "bg-gradient-to-r from-green-400 to-blue-500"
-                  : "bg-gray-300 dark:bg-gray-600"
+                  : "bg-gray-300 dark:bg-gray-600 hover:bg-gray-400 dark:hover:bg-gray-500"
               }`}
             >
-              <div className="flex h-full w-full items-center justify-center bg-white dark:bg-black rounded-full py-3 px-6">
+              <div className="flex h-full w-full items-center justify-center bg-white dark:bg-black rounded-full py-1.5 px-4">
                 <span
-                  className={`font-bold text-center ${
+                  className={`text-sm font-medium ${
                     activeCategory === category
                       ? "bg-clip-text text-transparent bg-gradient-to-b from-green-400 to-blue-500"
                       : "text-gray-500 dark:text-gray-400"

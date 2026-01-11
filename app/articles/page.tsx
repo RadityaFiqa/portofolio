@@ -1,44 +1,30 @@
 "use client";
 
-import { useState, useEffect, useMemo } from "react";
+import { useState, useMemo } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import OrnamentCircle from "@/app/ornament-circle2.svg";
 import { FaSearch, FaCalendar } from "react-icons/fa";
 import { motion } from "framer-motion";
+import { useQuery } from "@tanstack/react-query";
+import { formatDate, compareDates } from "@/helper/utils/dateFormatter";
+import { fetchArticles, articlesQueryKey, Article } from "@/helper/utils/api";
 
-interface Article {
-  slug: string;
-  title: string;
-  description: string;
-  date: string;
-  image: string;
-  tags: string[];
-  category: string;
-  featured: boolean;
-}
-
-// Format date to DD MMM YYYY
-function formatDate(dateString: string): string {
-  const date = new Date(dateString);
-  const day = date.getDate().toString().padStart(2, "0");
-  const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-  const month = months[date.getMonth()];
-  const year = date.getFullYear();
-  return `${day} ${month} ${year}`;
-}
+const categories = ["All", "Engineering Journey", "Career"];
 
 export default function Articles() {
-  const [articles, setArticles] = useState<Article[]>([]);
   const [searchQuery, setSearchQuery] = useState("");
   const [sortOrder, setSortOrder] = useState<"newest" | "oldest">("newest");
+  const [activeCategory, setActiveCategory] = useState("All");
 
-  useEffect(() => {
-    fetch("/articles.json")
-      .then((res) => res.json())
-      .then((data) => setArticles(data))
-      .catch((err) => console.error("Error fetching articles:", err));
-  }, []);
+  const {
+    data: articles = [],
+    isLoading,
+    error,
+  } = useQuery<Article[]>({
+    queryKey: articlesQueryKey,
+    queryFn: fetchArticles,
+  });
 
   const filteredArticles = useMemo(() => {
     let result = articles.filter((article) => {
@@ -48,18 +34,32 @@ export default function Articles() {
         article.tags.some((tag) =>
           tag.toLowerCase().includes(searchQuery.toLowerCase())
         );
-      return matchesSearch;
+      const matchesCategory =
+        activeCategory === "All" || article.category === activeCategory;
+      return matchesSearch && matchesCategory;
     });
 
-    // Sort by date
-    result.sort((a, b) => {
-      const dateA = new Date(a.date).getTime();
-      const dateB = new Date(b.date).getTime();
-      return sortOrder === "newest" ? dateB - dateA : dateA - dateB;
-    });
+    // Sort by date using moment helper
+    result.sort((a, b) => compareDates(a.date, b.date, sortOrder));
 
     return result;
-  }, [articles, searchQuery, sortOrder]);
+  }, [articles, searchQuery, sortOrder, activeCategory]);
+
+  if (isLoading) {
+    return (
+      <main className="min-h-screen flex items-center justify-center">
+        <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-blue-500"></div>
+      </main>
+    );
+  }
+
+  if (error) {
+    return (
+      <main className="lg:my-8 h-relative lg:min-h-screen flex items-center justify-center">
+        <p className="text-red-400 text-xl">Error loading articles.</p>
+      </main>
+    );
+  }
 
   return (
     <main className="lg:my-8 h-relative lg:min-h-screen">
@@ -104,6 +104,33 @@ export default function Articles() {
             <option value="newest">Newest</option>
             <option value="oldest">Oldest</option>
           </select>
+        </div>
+
+        {/* Category Filter */}
+        <div className="flex items-center justify-center w-full gap-2 md:gap-3 mt-10">
+          {categories.map((category) => (
+            <button
+              key={category}
+              onClick={() => setActiveCategory(category)}
+              className={`rounded-full p-[1.5px] transition-all duration-200 ${
+                activeCategory === category
+                  ? "bg-gradient-to-r from-green-400 to-blue-500"
+                  : "bg-gray-300 dark:bg-gray-600 hover:bg-gray-400 dark:hover:bg-gray-500"
+              }`}
+            >
+              <div className="flex h-full w-full items-center justify-center bg-white dark:bg-black rounded-full py-1.5 px-4">
+                <span
+                  className={`text-sm font-medium ${
+                    activeCategory === category
+                      ? "bg-clip-text text-transparent bg-gradient-to-b from-green-400 to-blue-500"
+                      : "text-gray-500 dark:text-gray-400"
+                  }`}
+                >
+                  {category}
+                </span>
+              </div>
+            </button>
+          ))}
         </div>
       </section>
 

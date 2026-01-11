@@ -2,21 +2,21 @@
   {
     "id": 1,
     "name": "Ian Pangestu",
-    "role": "Software Analyst At PT. Elnusa Tbk",
-    "message": "Raditya is a great developer. He has a good understanding of the project and always delivers on time.",
-    "image": "/profile.png",
+    "role": "Software Engineer at PT Hand Solutions Indonesia",
+    "message": "Raditya is someone I always enjoy collaborating with on projects. His problem-solving skills are impressive, and he always brings creative solutions to the table. What I appreciate most is his dedication to deliver quality work, even under tight deadlines. A reliable partner for any project!",
+    "image": "/testimonials/ian.png",
     "social": {
-      "linkedin": "https://linkedin.com/in/ian-pangestu"
+      "linkedin": "https://www.linkedin.com/in/ianpangestu/"
     }
   },
   {
     "id": 2,
-    "name": "Rizky Kurniawan",
-    "role": "Software Engineer At PT. Elnusa Tbk",
-    "message": "Raditya is a loyal and hardworking developer. He is always willing to learn new things and is a great team player.",
-    "image": "/profile.png",
+    "name": "Ananta Fatur",
+    "role": "Cloud Engineer at Rey (PT Vertika Technologies Nusantara)",
+    "message": "Working on projects with Raditya is always a great experience. He's not just technically skilled, but also a good communicator who makes collaboration smooth and efficient. His enthusiasm for learning new technologies and willingness to share knowledge makes him a valuable teammate in any project.",
+    "image": "/testimonials/ananta.png",
     "social": {
-      "linkedin": "https://linkedin.com/in/rizky-kurniawan"
+      "linkedin": "https://www.linkedin.com/in/anantafatur/"
     }
   }
 ]

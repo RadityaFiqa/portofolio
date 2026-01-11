@@ -1,30 +1,37 @@
 [
   {
     "id": 1,
-    "title": "1st Place Mobile App Competition",
-    "description": "Become the 1st place in Mobile App Competition at Magic Camp 2023. Held by Himpunan Mahasiswa Manajemen Administrasi Universitas Sebelas Maret",
-    "year": "2023",
+    "title": "Gold Medal - Forum Continuous Improvement Program",
+    "description": "Awarded Gold Medal at Forum Continuous Improvement Program, PT Elnusa Tbk for outstanding contribution and innovation.",
+    "year": "Jul 2025",
     "icon": "trophy"
   },
   {
     "id": 2,
-    "title": "Finalist Innovative Tech Competition",
-    "description": "Become the finalist in Innovative Tech Competition at Ifest Comp 2022. Held by Himpunan Mahasiswa Informatika Universitas Padjajaran",
-    "year": "2022",
-    "icon": "medal"
-  },
-  {
-    "id": 3,
-    "title": "1st Place Business Plan Competition",
-    "description": "Become the 1st place in Business Plan Competition at Smart IT Fest 2022. Held by Himpunan Mahasiswa D3 Teknik Informatika Universitas Sebelas Maret",
-    "year": "2022",
+    "title": "1st Place Mobile Design App - Magic Competition",
+    "description": "Achieved 1st place in Mobile Design App Competition at Magic Competition, Universitas Sebelas Maret.",
+    "year": "May 2023",
     "icon": "trophy"
   },
   {
+    "id": 3,
+    "title": "Finalist Innovative Technology - Ifest Competition",
+    "description": "Selected as Finalist in Innovative Technology Competition at Ifest Competition, Universitas Padjadjaran.",
+    "year": "Oct 2022",
+    "icon": "medal"
+  },
+  {
     "id": 4,
-    "title": "2nd Place Web Development Competition",
-    "description": "Become the 2nd place in Web Development Competition at Smart Inotek Comp 2022. Held by Himpunan Mahasiswa D3 Teknik Informatika PSDKU Universitas Sebelas Maret",
-    "year": "2022",
+    "title": "1st Place Business Idea - Smart IT Fest Competition",
+    "description": "Achieved 1st place in Business Idea Competition at Smart IT Fest Competition, Universitas Sebelas Maret.",
+    "year": "Jul 2022",
+    "icon": "trophy"
+  },
+  {
+    "id": 5,
+    "title": "2nd Place Web Design - Smart Inotek Competition",
+    "description": "Achieved 2nd place in Web Design Competition at Smart Inotek Competition, Universitas Sebelas Maret.",
+    "year": "Jul 2022",
     "icon": "medal"
   }
 ]

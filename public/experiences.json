@@ -1,25 +1,25 @@
 [
   {
     "id": 1,
-    "role": "Full-stack Developer",
+    "role": "Full Stack Developer",
     "company": "PT. Elnusa Tbk",
     "companyUrl": "https://elnusa.co.id",
     "type": "full-time",
-    "startDate": "2024",
+    "startDate": "Mar 2024",
     "endDate": "Present",
-    "description": "Leading the development of internal enterprise platforms. Spearheaded the migration of legacy systems to modern React-based architectures, resulting in a 40% improvement in load times.",
-    "techStack": ["React", "Node.js", "PostgreSQL"]
+    "description": "Improving efficiency workflows by developing Legal Online, Advance Payment & Corporate Card, Supply Chain, Vendor, HC Online System, improving reporting speed, accuracy and compliance. Enhanced system scalability by implementing Event-Driven Architecture, Tracing & Monitoring and integrating Node.js services with SAP, reducing system error rate by 30%+ and improving troubleshooting speed.",
+    "techStack": ["Vue.js", "TypeScript", "Node.js", "PostgreSQL", "SAP"]
   },
   {
     "id": 2,
-    "role": "Full-stack Developer",
+    "role": "Full Stack Developer",
     "company": "PT. Baracipta Esa Engineering",
-    "companyUrl": "https://baracipta.co.id",
+    "companyUrl": "https://beecons.co.id/",
     "type": "internship",
-    "startDate": "2023",
-    "endDate": "2023",
-    "description": "Collaborated with design teams to implement pixel-perfect user interfaces for various client projects. Assisted in backend API integration and database management.",
-    "techStack": ["Vue.js", "Laravel", "MySQL"]
+    "startDate": "Aug 2023",
+    "endDate": "Dec 2023",
+    "description": "Identified workflow limitations on estimator.id and delivered 12+ new features that improved daily operational usability and addressed core functional gaps. Improved platform stability by refactoring inefficient code sections and resolving recurring technical issues, reducing system errors by 25%.",
+    "techStack": ["PHP", "Node.js", "CodeIgniter", "Express.js"]
   },
   {
     "id": 3,
@@ -27,20 +27,20 @@
     "company": "UPT TIK Universitas Sebelas Maret",
     "companyUrl": "https://uns.ac.id",
     "type": "internship",
-    "startDate": "2023",
-    "endDate": "2023",
-    "description": "Helped internal team for collecting data and maintaining university applications. Improved data processing workflows.",
-    "techStack": ["PHP", "MySQL", "JavaScript"]
+    "startDate": "Jan 2023",
+    "endDate": "Aug 2023",
+    "description": "Analyzed administrative process bottlenecks and developed 2 internal Laravel applications to digitize workflows, reducing manual tasks and improving process turnaround time. Resolved 10+ website issues and produced comprehensive technical & API documentation, enabling smoother maintenance and faster onboarding for future developers.",
+    "techStack": ["PHP", "Laravel", "MySQL", "JavaScript"]
   },
   {
     "id": 4,
-    "role": "Full-stack Developer",
+    "role": "Full Stack Developer",
     "company": "PT. Upcolab",
     "companyUrl": "https://upcolab.com",
     "type": "freelance",
-    "startDate": "2023",
+    "startDate": "Jan 2023",
     "endDate": "Present",
-    "description": "Developed Android applications and web solutions for various clients in the digital marketing sector.",
-    "techStack": ["Kotlin", "React", "Firebase"]
+    "description": "Developed Android applications including consultation platform, attendance tracking app, and mental health consultation system for various clients.",
+    "techStack": ["Kotlin", "Jetpack Compose", "Laravel", "Node.js", "Bun"]
   }
 ]

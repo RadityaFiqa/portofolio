@@ -1,35 +1,24 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import Card from "../Card";
 
-interface Project {
+interface ProjectData {
   id: number;
   slug: string;
   title: string;
   description: string;
   image: string;
   techStack: string[];
+  category: string;
   featured: boolean;
 }
 
-export default function Project() {
-  const [projects, setProjects] = useState<Project[]>([]);
+interface ProjectProps {
+  projects: ProjectData[];
+}
 
-  useEffect(() => {
-    fetch("/projects.json")
-      .then((res) => res.json())
-      .then((data: Project[]) => {
-        // Filter only featured projects, limit to 3
-        const featuredProjects = data
-          .filter((project) => project.featured)
-          .slice(0, 3);
-        setProjects(featuredProjects);
-      })
-      .catch((err) => console.error("Error fetching projects:", err));
-  }, []);
-
+export default function ProjectSection({ projects }: ProjectProps) {
   return (
     <section className="px-4 md:px-8 lg:px-16 xl:px-20 lg:min-h-screen flex flex-col items-center my-16">
       <h1 className="text-3xl md:text-3xl lg:text-4xl xl:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-b from-green-400 to-blue-500 mb-4">

@@ -1,0 +1,22 @@
+[
+  {
+    "id": 1,
+    "institution": "Universitas Bina Nusantara",
+    "degree": "Bachelor of Computer Science",
+    "gpa": "3.92/4.0",
+    "startDate": "Feb 2025",
+    "endDate": "Present",
+    "description": "Selected as a member of the BNCC Elite Team, representing BINUS in regional and national programming competitions.",
+    "current": true
+  },
+  {
+    "id": 2,
+    "institution": "Universitas Sebelas Maret",
+    "degree": "Diploma of Informatics Engineering",
+    "gpa": "3.90/4.00",
+    "startDate": "Aug 2021",
+    "endDate": "Aug 2024",
+    "description": "Achieved 4 national-level awards in programming and applied IT competitions. Served as a Teaching Assistant and R&D Lead in the student association, focusing on Algorithms, Front-End Development, and Cloud Computing.",
+    "current": false
+  }
+]

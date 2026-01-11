@@ -1,50 +1,27 @@
 "use client";
 
-import { useState, useEffect, useMemo } from "react";
+import { useMemo, useState } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
-import { FaLinkedinIn, FaGithub, FaCode, FaAt, FaTrophy, FaMedal } from "react-icons/fa";
-
-interface AboutData {
-  name: string;
-  role: string;
-  image: string;
-  openToWork: boolean;
-  bio: string[];
-  social: {
-    linkedin: string;
-    github: string;
-    instagram: string;
-    email: string;
-  };
-}
-
-interface Experience {
-  id: number;
-  role: string;
-  company: string;
-  companyUrl: string;
-  type: string;
-  startDate: string;
-  endDate: string;
-  description: string;
-  techStack: string[];
-}
-
-interface Achievement {
-  id: number;
-  title: string;
-  description: string;
-  year: string;
-  icon: string;
-}
-
-interface Skills {
-  languages: { name: string }[];
-  frameworks: { name: string }[];
-  databases: { name: string }[];
-  tools: { name: string }[];
-}
+import { FaLinkedinIn, FaGithub, FaCode, FaAt, FaTrophy, FaMedal, FaGraduationCap } from "react-icons/fa";
+import { useQuery } from "@tanstack/react-query";
+import {
+  fetchAbout,
+  fetchExperiences,
+  fetchAchievements,
+  fetchSkills,
+  fetchEducation,
+  aboutQueryKey,
+  experiencesQueryKey,
+  achievementsQueryKey,
+  skillsQueryKey,
+  educationQueryKey,
+  AboutData,
+  Experience,
+  Achievement,
+  Skills,
+  Education,
+} from "@/helper/utils/api";
 
 const experienceTabs = [
   { id: "full-time", label: "Full Time" },
@@ -53,39 +30,38 @@ const experienceTabs = [
 ];
 
 export default function About() {
-  const [aboutData, setAboutData] = useState<AboutData | null>(null);
-  const [experiences, setExperiences] = useState<Experience[]>([]);
-  const [achievements, setAchievements] = useState<Achievement[]>([]);
-  const [skills, setSkills] = useState<Skills | null>(null);
   const [activeTab, setActiveTab] = useState("full-time");
 
-  useEffect(() => {
-    fetch("/about.json")
-      .then((res) => res.json())
-      .then((data) => setAboutData(data))
-      .catch((err) => console.error("Error fetching about data:", err));
+  const { data: aboutData, isLoading: aboutLoading } = useQuery<AboutData>({
+    queryKey: aboutQueryKey,
+    queryFn: fetchAbout,
+  });
 
-    fetch("/experiences.json")
-      .then((res) => res.json())
-      .then((data) => setExperiences(data))
-      .catch((err) => console.error("Error fetching experiences:", err));
+  const { data: experiences = [] } = useQuery<Experience[]>({
+    queryKey: experiencesQueryKey,
+    queryFn: fetchExperiences,
+  });
 
-    fetch("/achievements.json")
-      .then((res) => res.json())
-      .then((data) => setAchievements(data))
-      .catch((err) => console.error("Error fetching achievements:", err));
+  const { data: achievements = [] } = useQuery<Achievement[]>({
+    queryKey: achievementsQueryKey,
+    queryFn: fetchAchievements,
+  });
 
-    fetch("/skills.json")
-      .then((res) => res.json())
-      .then((data) => setSkills(data))
-      .catch((err) => console.error("Error fetching skills:", err));
-  }, []);
+  const { data: skills } = useQuery<Skills>({
+    queryKey: skillsQueryKey,
+    queryFn: fetchSkills,
+  });
+
+  const { data: education = [] } = useQuery<Education[]>({
+    queryKey: educationQueryKey,
+    queryFn: fetchEducation,
+  });
 
   const filteredExperiences = useMemo(() => {
     return experiences.filter((exp) => exp.type === activeTab);
   }, [experiences, activeTab]);
 
-  if (!aboutData) {
+  if (aboutLoading || !aboutData) {
     return (
       <main className="min-h-screen flex items-center justify-center">
         <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-blue-500"></div>
@@ -106,7 +82,7 @@ export default function About() {
               className="lg:w-80 flex-shrink-0"
             >
               <div className="lg:sticky lg:top-8">
-                <div className="bg-gray-900 rounded-2xl overflow-hidden">
+                <div className="bg-gray-100 dark:bg-gray-900 rounded-2xl overflow-hidden shadow-lg dark:shadow-none">
                   {/* Profile Image */}
                   <div className="relative">
                     <div className="aspect-square relative overflow-hidden">
@@ -117,7 +93,7 @@ export default function About() {
                         className="object-cover"
                       />
                       {/* Gradient Overlay */}
-                      <div className="absolute inset-0 bg-gradient-to-t from-gray-900 via-transparent to-transparent" />
+                      <div className="absolute inset-0 bg-gradient-to-t from-gray-100 dark:from-gray-900 via-transparent to-transparent" />
                     </div>
 
                     {/* Open to Work Badge */}
@@ -132,8 +108,8 @@ export default function About() {
 
                     {/* Name & Role */}
                     <div className="absolute bottom-4 left-4 right-4">
-                      <h1 className="text-2xl font-bold text-white">{aboutData.name}</h1>
-                      <p className="text-gray-400">{aboutData.role}</p>
+                      <h1 className="text-2xl font-bold text-gray-900 dark:text-white">{aboutData.name}</h1>
+                      <p className="text-gray-600 dark:text-gray-400">{aboutData.role}</p>
                     </div>
                   </div>
 
@@ -145,31 +121,31 @@ export default function About() {
                         href={aboutData.social.linkedin}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="w-10 h-10 bg-gray-800 hover:bg-gray-700 rounded-lg flex items-center justify-center transition-colors"
+                        className="w-10 h-10 bg-gray-200 dark:bg-gray-800 hover:bg-gray-300 dark:hover:bg-gray-700 rounded-lg flex items-center justify-center transition-colors"
                       >
-                        <FaLinkedinIn className="w-4 h-4 text-gray-400" />
+                        <FaLinkedinIn className="w-4 h-4 text-gray-600 dark:text-gray-400" />
                       </a>
                       <a
                         href={aboutData.social.github}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="w-10 h-10 bg-gray-800 hover:bg-gray-700 rounded-lg flex items-center justify-center transition-colors"
+                        className="w-10 h-10 bg-gray-200 dark:bg-gray-800 hover:bg-gray-300 dark:hover:bg-gray-700 rounded-lg flex items-center justify-center transition-colors"
                       >
-                        <FaGithub className="w-4 h-4 text-gray-400" />
+                        <FaGithub className="w-4 h-4 text-gray-600 dark:text-gray-400" />
                       </a>
                       <a
-                        href={aboutData.social.instagram}
+                        href={aboutData.social.github}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="w-10 h-10 bg-gray-800 hover:bg-gray-700 rounded-lg flex items-center justify-center transition-colors"
+                        className="w-10 h-10 bg-gray-200 dark:bg-gray-800 hover:bg-gray-300 dark:hover:bg-gray-700 rounded-lg flex items-center justify-center transition-colors"
                       >
-                        <FaCode className="w-4 h-4 text-gray-400" />
+                        <FaCode className="w-4 h-4 text-gray-600 dark:text-gray-400" />
                       </a>
                       <a
                         href={`mailto:${aboutData.social.email}`}
-                        className="w-10 h-10 bg-gray-800 hover:bg-gray-700 rounded-lg flex items-center justify-center transition-colors"
+                        className="w-10 h-10 bg-gray-200 dark:bg-gray-800 hover:bg-gray-300 dark:hover:bg-gray-700 rounded-lg flex items-center justify-center transition-colors"
                       >
-                        <FaAt className="w-4 h-4 text-gray-400" />
+                        <FaAt className="w-4 h-4 text-gray-600 dark:text-gray-400" />
                       </a>
                     </div>
                   </div>
@@ -191,7 +167,7 @@ export default function About() {
                 </h2>
                 <div className="space-y-4">
                   {aboutData.bio.map((paragraph, index) => (
-                    <p key={index} className="text-gray-400 leading-relaxed">
+                    <p key={index} className="text-gray-600 dark:text-gray-400 leading-relaxed">
                       {paragraph}
                     </p>
                   ))}
@@ -211,7 +187,7 @@ export default function About() {
                       className={`relative px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 ${
                         activeTab === tab.id
                           ? "text-white"
-                          : "text-gray-400 hover:text-gray-300 bg-gray-800/50 hover:bg-gray-800"
+                          : "text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300 bg-gray-200/50 dark:bg-gray-800/50 hover:bg-gray-300 dark:hover:bg-gray-800"
                       }`}
                     >
                       {activeTab === tab.id && (
@@ -241,21 +217,21 @@ export default function About() {
                           <div key={exp.id} className="relative pl-8 pb-12 last:pb-0">
                             {/* Timeline Line */}
                             {index < filteredExperiences.length - 1 && (
-                              <div className="absolute left-[7px] top-3 bottom-0 w-px bg-gray-800" />
+                              <div className="absolute left-[7px] top-3 bottom-0 w-px bg-gray-300 dark:bg-gray-800" />
                             )}
                             
                             {/* Timeline Dot */}
-                            <div className="absolute left-0 top-1.5 w-4 h-4 rounded-full border-2 border-gray-700 bg-gray-900" />
+                            <div className="absolute left-0 top-1.5 w-4 h-4 rounded-full border-2 border-gray-400 dark:border-gray-700 bg-gray-100 dark:bg-gray-900" />
 
                             {/* Content */}
                             <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-2 mb-3">
                               <div>
-                                <h3 className="text-lg font-semibold text-white">{exp.role}</h3>
+                                <h3 className="text-lg font-semibold text-gray-900 dark:text-white">{exp.role}</h3>
                                 <a
                                   href={exp.companyUrl}
                                   target="_blank"
                                   rel="noopener noreferrer"
-                                  className="text-emerald-400 hover:text-emerald-300 transition-colors"
+                                  className="text-emerald-600 dark:text-emerald-400 hover:text-emerald-500 dark:hover:text-emerald-300 transition-colors"
                                 >
                                   {exp.company}
                                 </a>
@@ -265,7 +241,7 @@ export default function About() {
                               </span>
                             </div>
 
-                            <p className="text-gray-400 text-sm mb-4 leading-relaxed">
+                            <p className="text-gray-600 dark:text-gray-400 text-sm mb-4 leading-relaxed">
                               {exp.description}
                             </p>
 
@@ -274,7 +250,7 @@ export default function About() {
                               {exp.techStack.map((tech, techIndex) => (
                                 <span
                                   key={techIndex}
-                                  className="px-3 py-1 text-xs font-medium bg-gray-800 text-gray-300 rounded-md border border-gray-700"
+                                  className="px-3 py-1 text-xs font-medium bg-gray-200 dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded-md border border-gray-300 dark:border-gray-700"
                                 >
                                   {tech}
                                 </span>
@@ -296,6 +272,52 @@ export default function About() {
                 </div>
               </section>
 
+              {/* Education Section */}
+              {education.length > 0 && (
+                <section className="mb-16">
+                  <h2 className="text-2xl md:text-3xl font-bold mb-6">Education</h2>
+                  
+                  <div className="space-y-0">
+                    {education.map((edu, index) => (
+                      <div key={edu.id} className="relative pl-8 pb-8 last:pb-0">
+                        {/* Timeline Line */}
+                        {index < education.length - 1 && (
+                          <div className="absolute left-[7px] top-3 bottom-0 w-px bg-gray-300 dark:bg-gray-800" />
+                        )}
+                        
+                        {/* Timeline Dot */}
+                        <div className="absolute left-0 top-1.5 w-4 h-4 rounded-full border-2 border-blue-400 dark:border-blue-500 bg-gray-100 dark:bg-gray-900 flex items-center justify-center">
+                          {edu.current && (
+                            <div className="w-2 h-2 bg-blue-400 dark:bg-blue-500 rounded-full animate-pulse" />
+                          )}
+                        </div>
+
+                        {/* Content */}
+                        <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-2 mb-2">
+                          <div>
+                            <div className="flex items-center gap-2">
+                              <FaGraduationCap className="w-4 h-4 text-blue-500 dark:text-blue-400" />
+                              <h3 className="text-lg font-semibold text-gray-900 dark:text-white">{edu.institution}</h3>
+                            </div>
+                            <p className="text-emerald-600 dark:text-emerald-400 text-sm">{edu.degree}</p>
+                          </div>
+                          <div className="text-right">
+                            <span className="text-sm text-gray-500 whitespace-nowrap">
+                              {edu.startDate} - {edu.endDate}
+                            </span>
+                            <p className="text-sm font-medium text-blue-600 dark:text-blue-400">GPA: {edu.gpa}</p>
+                          </div>
+                        </div>
+
+                        <p className="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">
+                          {edu.description}
+                        </p>
+                      </div>
+                    ))}
+                  </div>
+                </section>
+              )}
+
               {/* Skills Section */}
               {skills && (
                 <section className="mb-16">
@@ -304,7 +326,7 @@ export default function About() {
                   <div className="space-y-6">
                     {/* Languages */}
                     <div>
-                      <h3 className="text-sm font-medium text-emerald-400 uppercase tracking-wider mb-3">
+                      <h3 className="text-sm font-medium text-emerald-600 dark:text-emerald-400 uppercase tracking-wider mb-3">
                         Languages
                       </h3>
                       <div className="flex flex-wrap gap-2">
@@ -314,7 +336,7 @@ export default function About() {
                             initial={{ opacity: 0, scale: 0.8 }}
                             whileInView={{ opacity: 1, scale: 1 }}
                             transition={{ duration: 0.3, delay: index * 0.05 }}
-                            className="px-4 py-2 bg-gray-800 text-gray-300 rounded-lg text-sm font-medium border border-gray-700 hover:border-emerald-500/50 hover:bg-gray-700 transition-colors"
+                            className="px-4 py-2 bg-gray-200 dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded-lg text-sm font-medium border border-gray-300 dark:border-gray-700 hover:border-emerald-500/50 hover:bg-gray-300 dark:hover:bg-gray-700 transition-colors"
                           >
                             {skill.name}
                           </motion.span>
@@ -324,7 +346,7 @@ export default function About() {
 
                     {/* Frameworks */}
                     <div>
-                      <h3 className="text-sm font-medium text-blue-400 uppercase tracking-wider mb-3">
+                      <h3 className="text-sm font-medium text-blue-500 dark:text-blue-400 uppercase tracking-wider mb-3">
                         Frameworks
                       </h3>
                       <div className="flex flex-wrap gap-2">
@@ -334,7 +356,7 @@ export default function About() {
                             initial={{ opacity: 0, scale: 0.8 }}
                             whileInView={{ opacity: 1, scale: 1 }}
                             transition={{ duration: 0.3, delay: index * 0.05 }}
-                            className="px-4 py-2 bg-gray-800 text-gray-300 rounded-lg text-sm font-medium border border-gray-700 hover:border-blue-500/50 hover:bg-gray-700 transition-colors"
+                            className="px-4 py-2 bg-gray-200 dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded-lg text-sm font-medium border border-gray-300 dark:border-gray-700 hover:border-blue-500/50 hover:bg-gray-300 dark:hover:bg-gray-700 transition-colors"
                           >
                             {skill.name}
                           </motion.span>
@@ -344,7 +366,7 @@ export default function About() {
 
                     {/* Databases */}
                     <div>
-                      <h3 className="text-sm font-medium text-orange-400 uppercase tracking-wider mb-3">
+                      <h3 className="text-sm font-medium text-orange-500 dark:text-orange-400 uppercase tracking-wider mb-3">
                         Databases
                       </h3>
                       <div className="flex flex-wrap gap-2">
@@ -354,7 +376,7 @@ export default function About() {
                             initial={{ opacity: 0, scale: 0.8 }}
                             whileInView={{ opacity: 1, scale: 1 }}
                             transition={{ duration: 0.3, delay: index * 0.05 }}
-                            className="px-4 py-2 bg-gray-800 text-gray-300 rounded-lg text-sm font-medium border border-gray-700 hover:border-orange-500/50 hover:bg-gray-700 transition-colors"
+                            className="px-4 py-2 bg-gray-200 dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded-lg text-sm font-medium border border-gray-300 dark:border-gray-700 hover:border-orange-500/50 hover:bg-gray-300 dark:hover:bg-gray-700 transition-colors"
                           >
                             {skill.name}
                           </motion.span>
@@ -364,7 +386,7 @@ export default function About() {
 
                     {/* Tools */}
                     <div>
-                      <h3 className="text-sm font-medium text-cyan-400 uppercase tracking-wider mb-3">
+                      <h3 className="text-sm font-medium text-cyan-500 dark:text-cyan-400 uppercase tracking-wider mb-3">
                         Tools
                       </h3>
                       <div className="flex flex-wrap gap-2">
@@ -374,7 +396,7 @@ export default function About() {
                             initial={{ opacity: 0, scale: 0.8 }}
                             whileInView={{ opacity: 1, scale: 1 }}
                             transition={{ duration: 0.3, delay: index * 0.05 }}
-                            className="px-4 py-2 bg-gray-800 text-gray-300 rounded-lg text-sm font-medium border border-gray-700 hover:border-cyan-500/50 hover:bg-gray-700 transition-colors"
+                            className="px-4 py-2 bg-gray-200 dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded-lg text-sm font-medium border border-gray-300 dark:border-gray-700 hover:border-cyan-500/50 hover:bg-gray-300 dark:hover:bg-gray-700 transition-colors"
                           >
                             {skill.name}
                           </motion.span>
@@ -397,22 +419,24 @@ export default function About() {
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.5, delay: index * 0.1 }}
-                        className="bg-gray-800/50 border border-gray-700 rounded-xl p-5 hover:border-emerald-500/50 transition-colors"
+                        className="group bg-gray-100 dark:bg-gray-800/50 border border-gray-300 dark:border-gray-700 rounded-xl p-5 hover:border-emerald-500/50 transition-all"
                       >
                         <div className="flex items-start gap-4">
                           <div className="w-12 h-12 bg-gradient-to-br from-emerald-500/20 to-blue-500/20 rounded-xl flex items-center justify-center flex-shrink-0">
                             {achievement.icon === "trophy" ? (
-                              <FaTrophy className="w-6 h-6 text-yellow-400" />
+                              <FaTrophy className="w-6 h-6 text-yellow-500 dark:text-yellow-400" />
                             ) : (
-                              <FaMedal className="w-6 h-6 text-amber-400" />
+                              <FaMedal className="w-6 h-6 text-amber-500 dark:text-amber-400" />
                             )}
                           </div>
                           <div className="flex-1 min-w-0">
                             <div className="flex items-center gap-2 mb-1">
-                              <h3 className="font-semibold text-white truncate">{achievement.title}</h3>
+                              <h3 className="font-semibold text-gray-900 dark:text-white group-hover:whitespace-normal truncate">{achievement.title}</h3>
                               <span className="text-xs text-gray-500 flex-shrink-0">{achievement.year}</span>
                             </div>
-                            <p className="text-sm text-gray-400 line-clamp-2">{achievement.description}</p>
+                            <p className="text-sm text-gray-600 dark:text-gray-400 line-clamp-2 group-hover:line-clamp-none transition-all">
+                              {achievement.description}
+                            </p>
                           </div>
                         </div>
                       </motion.div>

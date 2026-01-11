@@ -2,20 +2,20 @@
   "languages": [
     { "name": "JavaScript" },
     { "name": "TypeScript" },
+    { "name": "Go" },
     { "name": "PHP" },
     { "name": "Kotlin" },
     { "name": "Python" },
-    { "name": "Java" },
-    { "name": "Go" }
+    { "name": "R" }
   ],
   "frameworks": [
     { "name": "React" },
     { "name": "Next.js" },
+    { "name": "Vue.js" },
     { "name": "Node.js" },
     { "name": "Laravel" },
-    { "name": "Vue.js" },
     { "name": "Express.js" },
-    { "name": "Spring Boot" }
+    { "name": "Fiber"}
   ],
   "databases": [
     { "name": "PostgreSQL" },
@@ -29,8 +29,8 @@
     { "name": "Docker" },
     { "name": "Linux" },
     { "name": "VS Code" },
-    { "name": "Figma" },
     { "name": "Postman" },
-    { "name": "Jira" }
+    { "name": "Jira" },
+    { "name": "Figma" }
   ]
 }

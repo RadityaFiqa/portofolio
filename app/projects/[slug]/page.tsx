@@ -1,12 +1,14 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Image from "next/image";
 import { useParams, useRouter } from "next/navigation";
 import { motion } from "framer-motion";
 import { FaArrowLeft, FaExternalLinkAlt, FaGithub } from "react-icons/fa";
+import { useQuery } from "@tanstack/react-query";
+import { fetchProjects, projectsQueryKey } from "@/helper/utils/api";
 
-interface Project {
+interface ProjectDetail {
   id: number;
   slug: string;
   title: string;
@@ -23,25 +25,17 @@ interface Project {
 export default function ProjectDetail() {
   const params = useParams();
   const router = useRouter();
-  const [project, setProject] = useState<Project | null>(null);
+  const slug = params.slug as string;
   const [selectedImage, setSelectedImage] = useState(0);
-  const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    fetch("/projects.json")
-      .then((res) => res.json())
-      .then((data: Project[]) => {
-        const found = data.find((p) => p.slug === params.slug);
-        setProject(found || null);
-        setLoading(false);
-      })
-      .catch((err) => {
-        console.error("Error fetching project:", err);
-        setLoading(false);
-      });
-  }, [params.slug]);
+  const { data: projects = [], isLoading } = useQuery<ProjectDetail[]>({
+    queryKey: projectsQueryKey,
+    queryFn: fetchProjects as () => Promise<ProjectDetail[]>,
+  });
 
-  if (loading) {
+  const project = projects.find((p) => p.slug === slug);
+
+  if (isLoading) {
     return (
       <main className="min-h-screen flex items-center justify-center">
         <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-blue-500"></div>
@@ -169,24 +163,30 @@ export default function ProjectDetail() {
             </div>
 
             {/* Action Buttons */}
-            <div className="flex flex-wrap gap-4 pt-4">
-              <a
-                href={project.liveUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-green-400 to-blue-500 text-white font-semibold rounded-full hover:opacity-90 transition-opacity"
-              >
-                <FaExternalLinkAlt /> Live Demo
-              </a>
-              <a
-                href={project.githubUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-2 px-6 py-3 border-2 border-gray-300 dark:border-gray-600 rounded-full font-semibold hover:border-blue-500 dark:hover:border-blue-400 transition-colors"
-              >
-                <FaGithub /> View Code
-              </a>
-            </div>
+            {(project.liveUrl || project.githubUrl) && (
+              <div className="flex flex-wrap gap-4 pt-4">
+                {project.liveUrl && (
+                  <a
+                    href={project.liveUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-green-400 to-blue-500 text-white font-semibold rounded-full hover:opacity-90 transition-opacity"
+                  >
+                    <FaExternalLinkAlt /> Live Demo
+                  </a>
+                )}
+                {project.githubUrl && (
+                  <a
+                    href={project.githubUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-2 px-6 py-3 border-2 border-gray-300 dark:border-gray-600 rounded-full font-semibold hover:border-blue-500 dark:hover:border-blue-400 transition-colors"
+                  >
+                    <FaGithub /> View Code
+                  </a>
+                )}
+              </div>
+            )}
           </motion.div>
         </div>
       </section>

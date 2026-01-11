@@ -1,4 +1,4 @@
-import { FaGithub, FaLinkedinIn, FaInstagram } from "react-icons/fa";
+import { FaGithub, FaLinkedinIn } from "react-icons/fa";
 
 export default function Footer() {
   return (
@@ -15,14 +15,7 @@ export default function Footer() {
         </a>
         <a
           className="flex items-center justify-center border-2 border-white rounded-full w-12 h-12 "
-          href="https://instagram.com/sekutumu"
-          target="_blank"
-        >
-          <FaInstagram className=" w-6 h-6" />
-        </a>
-        <a
-          className="flex items-center justify-center border-2 border-white rounded-full w-12 h-12 "
-          href="https://instagram.com/sekutumu"
+          href="https://github.com/radityafs"
           target="_blank"
         >
           <FaGithub className=" w-6 h-6" />

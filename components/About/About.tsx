@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-import { FaLinkedinIn, FaInstagram, FaGithub } from "react-icons/fa";
+import { FaLinkedinIn, FaGithub } from "react-icons/fa";
 import PhotoProfile from "@/app/profile.png";
 import OrnamentCircle from "@/app/ornament-circle.svg";
 import Lottie from "lottie-react";
@@ -67,14 +67,7 @@ export default function AboutSection() {
           </a>
           <a
             className="flex items-center justify-center border-2 border-white rounded-full w-12 h-12 "
-            href="https://instagram.com/sekutumu"
-            target="_blank"
-          >
-            <FaInstagram className=" w-6 h-6" />
-          </a>
-          <a
-            className="flex items-center justify-center border-2 border-white rounded-full w-12 h-12 "
-            href="https://instagram.com/sekutumu"
+            href="https://github.com/radityafs"
             target="_blank"
           >
             <FaGithub className=" w-6 h-6" />

@@ -4,28 +4,14 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { FaLinkedinIn } from "react-icons/fa";
+import { Testimonial } from "@/helper/utils/api";
 
-interface Testimonial {
-  id: number;
-  name: string;
-  role: string;
-  message: string;
-  image: string;
-  social?: {
-    linkedin?: string;
-  };
+interface TestimonialsProps {
+  testimonials: Testimonial[];
 }
 
-export default function Testimonials() {
-  const [testimonials, setTestimonials] = useState<Testimonial[]>([]);
+export default function Testimonials({ testimonials }: TestimonialsProps) {
   const [show, setShow] = useState<number>(0);
-
-  useEffect(() => {
-    fetch("/testimonials.json")
-      .then((res) => res.json())
-      .then((data) => setTestimonials(data))
-      .catch((err) => console.error("Error fetching testimonials:", err));
-  }, []);
 
   useEffect(() => {
     if (testimonials.length === 0) return;

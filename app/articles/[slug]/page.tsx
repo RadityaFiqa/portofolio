@@ -1,6 +1,5 @@
 "use client";
 
-import { useState, useEffect } from "react";
 import { useParams, useRouter } from "next/navigation";
 import { motion } from "framer-motion";
 import { FaArrowLeft, FaCalendar, FaTag } from "react-icons/fa";
@@ -8,68 +7,37 @@ import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import rehypeHighlight from "rehype-highlight";
 import "highlight.js/styles/github-dark.css";
-
-interface Article {
-  slug: string;
-  title: string;
-  description: string;
-  date: string;
-  image: string;
-  tags: string[];
-  category: string;
-  featured: boolean;
-}
-
-// Format date to DD MMM YYYY
-function formatDate(dateString: string): string {
-  const date = new Date(dateString);
-  const day = date.getDate().toString().padStart(2, "0");
-  const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-  const month = months[date.getMonth()];
-  const year = date.getFullYear();
-  return `${day} ${month} ${year}`;
-}
+import { useQuery } from "@tanstack/react-query";
+import { formatDate } from "@/helper/utils/dateFormatter";
+import {
+  fetchArticles,
+  articlesQueryKey,
+  fetchArticleContent,
+  articleContentQueryKey,
+  Article,
+} from "@/helper/utils/api";
 
 export default function ArticleDetail() {
   const params = useParams();
   const router = useRouter();
-  const [article, setArticle] = useState<Article | null>(null);
-  const [content, setContent] = useState<string>("");
-  const [loading, setLoading] = useState(true);
+  const slug = params.slug as string;
 
-  useEffect(() => {
-    // Fetch article metadata
-    fetch("/articles.json")
-      .then((res) => res.json())
-      .then((data: Article[]) => {
-        const found = data.find((a) => a.slug === params.slug);
-        setArticle(found || null);
-        
-        if (found) {
-          // Fetch markdown content
-          fetch(`/content/post/${found.slug}.md`)
-            .then((res) => res.text())
-            .then((text) => {
-              // Remove frontmatter (content between --- markers)
-              const contentWithoutFrontmatter = text.replace(/^---[\s\S]*?---\n/, "");
-              setContent(contentWithoutFrontmatter);
-              setLoading(false);
-            })
-            .catch((err) => {
-              console.error("Error fetching markdown:", err);
-              setLoading(false);
-            });
-        } else {
-          setLoading(false);
-        }
-      })
-      .catch((err) => {
-        console.error("Error fetching article:", err);
-        setLoading(false);
-      });
-  }, [params.slug]);
+  const { data: articles = [] } = useQuery<Article[]>({
+    queryKey: articlesQueryKey,
+    queryFn: fetchArticles,
+  });
 
-  if (loading) {
+  const article = articles.find((a) => a.slug === slug);
+
+  const { data: content = "", isLoading: contentLoading } = useQuery<string>({
+    queryKey: articleContentQueryKey(slug),
+    queryFn: () => fetchArticleContent(slug),
+    enabled: !!article,
+  });
+
+  const isLoading = !articles.length || (article && contentLoading);
+
+  if (isLoading) {
     return (
       <main className="min-h-screen flex items-center justify-center">
         <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-blue-500"></div>
