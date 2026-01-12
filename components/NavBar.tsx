@@ -2,14 +2,28 @@
 
 import { useTheme } from "next-themes";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import React, { useState, useEffect } from "react";
 import { FaBars, FaRegMoon, FaRegSun } from "react-icons/fa";
 import { FaXmark } from "react-icons/fa6";
+
+const navItems = [
+  { href: "/", label: "Home" },
+  { href: "/projects", label: "Projects" },
+  { href: "/articles", label: "Articles" },
+  { href: "/about", label: "About" },
+];
 
 export default function NavBar() {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [mounted, setMounted] = useState(false);
   const { resolvedTheme, setTheme } = useTheme();
+  const pathname = usePathname();
+
+  const isActive = (href: string) => {
+    if (href === "/") return pathname === "/";
+    return pathname.startsWith(href);
+  };
 
   useEffect(() => {
     setMounted(true);
@@ -27,10 +41,22 @@ export default function NavBar() {
       </Link>
 
       <div className="hidden md:flex space-x-8 items-center">
-        <Link href="/">Home</Link>
-        <Link href="/projects">Projects</Link>
-        <Link href="/articles">Articles</Link>
-        <Link href="/about">About</Link>
+        {navItems.map((item) => (
+          <Link
+            key={item.href}
+            href={item.href}
+            className={`relative py-1 transition-all duration-300 ${
+              isActive(item.href)
+                ? "text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-blue-500 font-semibold"
+                : "hover:text-green-400"
+            }`}
+          >
+            {item.label}
+            {isActive(item.href) && (
+              <span className="absolute -bottom-1 left-0 w-full h-0.5 bg-gradient-to-r from-green-400 to-blue-500 rounded-full" />
+            )}
+          </Link>
+        ))}
       </div>
 
       <div className="flex gap-4 md:gap-6 items-center">
@@ -74,26 +100,22 @@ export default function NavBar() {
 
           <div className="flex h-full flex-col gap-4">
             <ul className="flex h-full justify-center items-center flex-col gap-8">
-              <li>
-                <Link href="/" className="text-2xl" onClick={() => setIsOpen(false)}>
-                  Home
-                </Link>
-              </li>
-              <li>
-                <Link href="/projects" className="text-2xl" onClick={() => setIsOpen(false)}>
-                  Projects
-                </Link>
-              </li>
-              <li>
-                <Link href="/articles" className="text-2xl" onClick={() => setIsOpen(false)}>
-                  Articles
-                </Link>
-              </li>
-              <li>
-                <Link href="/about" className="text-2xl" onClick={() => setIsOpen(false)}>
-                  About
-                </Link>
-              </li>
+              {navItems.map((item) => (
+                <li key={item.href}>
+                  <Link
+                    href={item.href}
+                    className={`text-2xl transition-all duration-300 ${
+                      isActive(item.href)
+                        ? "text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-blue-500 font-bold"
+                        : "hover:text-green-400"
+                    }`}
+                    onClick={() => setIsOpen(false)}
+                  >
+                    {item.label}
+                    {isActive(item.href) && " •"}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
         </div>
