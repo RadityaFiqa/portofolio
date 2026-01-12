@@ -1,6 +1,7 @@
 "use client";
 
 import { useTheme } from "next-themes";
+import Link from "next/link";
 import React, { useState, useEffect } from "react";
 import { FaBars, FaRegMoon, FaRegSun } from "react-icons/fa";
 import { FaXmark } from "react-icons/fa6";
@@ -21,15 +22,15 @@ export default function NavBar() {
         zIndex: 100,
       }}
     >
-      <a href="/" className="text-2xl font-bold">
+      <Link href="/" className="text-2xl font-bold">
         radityaa.dev
-      </a>
+      </Link>
 
       <div className="hidden md:flex space-x-8 items-center">
-        <a href="/">Home</a>
-        <a href="/projects">Projects</a>
-        <a href="/articles">Articles</a>
-        <a href="/about">About</a>
+        <Link href="/">Home</Link>
+        <Link href="/projects">Projects</Link>
+        <Link href="/articles">Articles</Link>
+        <Link href="/about">About</Link>
       </div>
 
       <div className="flex gap-4 md:gap-6 items-center">
@@ -74,24 +75,24 @@ export default function NavBar() {
           <div className="flex h-full flex-col gap-4">
             <ul className="flex h-full justify-center items-center flex-col gap-8">
               <li>
-                <a href="/" className="text-2xl">
+                <Link href="/" className="text-2xl" onClick={() => setIsOpen(false)}>
                   Home
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="/projects" className="text-2xl">
+                <Link href="/projects" className="text-2xl" onClick={() => setIsOpen(false)}>
                   Projects
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="/articles" className="text-2xl">
+                <Link href="/articles" className="text-2xl" onClick={() => setIsOpen(false)}>
                   Articles
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="/about" className="text-2xl">
+                <Link href="/about" className="text-2xl" onClick={() => setIsOpen(false)}>
                   About
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
