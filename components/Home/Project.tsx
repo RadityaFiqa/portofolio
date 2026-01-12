@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { motion } from "framer-motion";
 import Card from "../Card";
 
@@ -50,9 +51,9 @@ export default function ProjectSection({ projects }: ProjectProps) {
 
       <div className="rounded-full bg-gradient-to-r from-green-400 to-blue-500 p-0.5 mt-16">
         <div className="flex h-full w-full items-center justify-center bg-white dark:bg-black rounded-full py-3 px-6">
-          <a className=" font-bold" href="/projects">
+          <Link className="font-bold" href="/projects">
             See More Projects
-          </a>
+          </Link>
         </div>
       </div>
     </section>

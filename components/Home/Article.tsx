@@ -64,9 +64,9 @@ export default function Articles({ articles }: ArticlesProps) {
 
       <div className="rounded-full bg-gradient-to-r from-green-400 to-blue-500 p-0.5 mt-16">
         <div className="flex h-full w-full items-center justify-center bg-white dark:bg-black rounded-full py-3 px-6">
-          <a className=" font-bold" href="/articles">
+          <Link className="font-bold" href="/articles">
             See More Articles
-          </a>
+          </Link>
         </div>
       </div>
     </section>

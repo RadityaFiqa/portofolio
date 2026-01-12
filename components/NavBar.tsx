@@ -74,13 +74,13 @@ export default function NavBar() {
           </button>
         )}
 
-        <a
+        <Link
           href="https://api.whatsapp.com/send/?phone=%2B6281232254875"
           target="_blank"
           className="bg-gradient-to-r from-green-400 to-blue-500 text-white px-4 py-2 rounded-full text-sm font-semibold"
         >
           Contact Me
-        </a>
+        </Link>
 
         <div className="md:hidden flex items-center">
           <FaBars onClick={() => setIsOpen(!isOpen)} className="text-2xl" />
