@@ -69,7 +69,7 @@ export default function Projects() {
         </h1>
 
         <p className="text-gray-400 text-mute mb-8 text-center">
-          Here are a few past design projects I've worked on. Want to see more?
+          Here are a few past projects I've worked on. Want to see more?
         </p>
 
         <div className="flex justify-center w-full md:w-1/2">
