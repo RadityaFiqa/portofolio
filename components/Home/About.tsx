@@ -4,6 +4,7 @@ import OrnamentCircle from "@/app/ornament-circle.svg";
 import { motion, Variants } from "framer-motion";
 import dynamic from "next/dynamic";
 import helloAnimation from "@/public/hello.json";
+import TerminalHero from "@/components/TerminalHero";
 
 const Lottie = dynamic(() => import("lottie-react"), { ssr: false });
 
@@ -75,7 +76,7 @@ const ornamentVariants: Variants = {
 
 export default function Home() {
   return (
-    <section className="px-4 md:px-8 lg:px-16 xl:px-20 relative min-h-screen flex items-center justify-center overflow-hidden">
+    <section className="px-4 md:px-8 lg:px-16 xl:px-20 relative min-h-screen flex items-center overflow-hidden">
       <motion.div
         variants={ornamentVariants}
         initial="hidden"
@@ -93,7 +94,7 @@ export default function Home() {
         variants={containerVariants}
         initial="hidden"
         animate="visible"
-        className="flex w-full flex-col justify-center z-10"
+        className="grid w-full grid-cols-1 lg:grid-cols-2 items-center gap-10 z-10"
       >
         <div className="space-y-6">
           <motion.h1
@@ -146,6 +147,10 @@ export default function Home() {
             </motion.span>
           </motion.p>
         </div>
+
+        <motion.div variants={itemVariants} className="w-full">
+          <TerminalHero />
+        </motion.div>
       </motion.div>
     </section>
   );
